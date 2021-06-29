@@ -22,6 +22,7 @@ import (
 	"flag"
 	"fmt"
 	"io/ioutil"
+	"k8s.io/klog"
 	"net/http"
 	"os"
 	"strings"
@@ -156,7 +157,7 @@ func Run(opts *options.Options, stopChan <-chan struct{}) error {
 
 	if opts.Scope == apiextv1.NamespaceScoped {
 		opts.Config.TargetNamespace = opts.Config.KubeFedNamespace
-		klog.Infof("KubeFed will be limited to the %q namespace", opts.Config.KubeFedNamespace)
+		klog.InfoS("KubeFed will be limited to the namespace", "namespace" , opts.Config.KubeFedNamespace)
 	} else {
 		opts.Config.TargetNamespace = metav1.NamespaceAll
 		klog.Info("KubeFed will target all namespaces")
