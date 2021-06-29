@@ -70,6 +70,10 @@ higher-level APIs:
    ```
    kind create cluster
    ```
+1. Download required binaries:
+  ```
+  ./scripts/download-binaries.sh
+  ```
 1. Deploy kubefed:
    ```
    make deploy.kind
